@@ -24,6 +24,7 @@ function renderChef(req, res, next) {
     const { id } = req.params;
 
     if(isNaN(id)) {
+        // Redirect not found
         next();
     } 
     
