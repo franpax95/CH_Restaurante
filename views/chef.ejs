@@ -91,15 +91,15 @@
                         <hr class="custom-hr" />
                         <p><%= plate.description %></p>
                         <div class="links w-100 d-inline-flex align-items-center justify-content-around">
-                            <a href="/<%= plate.id %>" class="custom-btn light">Edit</a>
-                            <a href="/<%= plate.id %>" class="custom-btn dark">Delete</a>
+                            <a href="/<%= chef.chef_id %>/plates/<%= plate.plate_id %>" class="custom-btn light">Edit</a>
+                            <a href="/<%= chef.chef_id %>/plates/<%= plate.plate_id %>" class="custom-btn dark">Delete</a>
                         </div>
                     </div>
                 </div>
             <% }) %>
 
             <div class="col-12 d-flex justify-content-center align-items-center">
-                <a href="" class="custom-btn light large">Add plate</a>
+                <a href="/<%= chef.chef_id %>/plates" class="custom-btn light large">Add plate</a>
             </div>
         </div>
     </section>

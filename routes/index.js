@@ -14,12 +14,12 @@ router.get('/register', renderRegister);
 /* GET login page. */
 router.get('/login', renderLogin);
 
-/* GET plate form page. */
-router.get('/plates', renderPlatesForm);
-router.get('/plates/:id', renderPlatesForm);
-
 /* GET chef page. */
-router.get('/:id', renderChef);
+router.get('/:chef_id', renderChef);
+
+/* GET plate form page. */
+router.get('/:chef_id/plates', renderPlatesForm);
+router.get('/:chef_id/plates/:plate_id', renderPlatesForm);
 
 
 /* GET Not Found page. */
