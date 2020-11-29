@@ -37,12 +37,12 @@ footer {
     text-transform: uppercase;
     text-decoration: none !important;
 
-    transition: background-color .4s;
+    transition: background-color .4s, border-color .4s;
 }
 .custom-btn.large { width: 100%; }
 .custom-btn.dark { background-color: $darkColor; color: $lightColor;  }
-.custom-btn.dark:hover { background-color: $darkHoverColor; }
-.custom-btn.dark:active { background-color: $darkActiveColor; }
+.custom-btn.dark:hover { background-color: $darkHoverColor; border-color: $darkHoverColor; }
+.custom-btn.dark:active { background-color: $darkActiveColor; border-color: $darkActiveColor; }
 .custom-btn.light { background-color: $lightColor; color: $darkColor;  }
 .custom-btn.light:hover { background-color: $lightHoverColor; }
 .custom-btn.light:active { background-color: $lightActiveColor; }

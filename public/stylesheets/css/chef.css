@@ -1,0 +1,52 @@
+/** Colors */
+.chef-card {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 10vw;
+}
+
+.chef-card .img-wrapper {
+  margin-bottom: 15px;
+  width: 100%;
+  background-color: white;
+}
+
+.chef-card .img-wrapper img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.chef-card .text-wrapper {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: white;
+}
+
+.chef-card h3 {
+  margin-top: 50px;
+}
+
+.chef-card h6,
+.chef-card p {
+  margin: 10px 0;
+}
+
+.chef-card .links {
+  margin: 20px 0;
+}
+
+.plates-list {
+  padding: 10vh;
+  background-color: whitesmoke;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .plates-list {
+    padding: 10vh 5vw;
+    background-color: whitesmoke;
+  }
+}

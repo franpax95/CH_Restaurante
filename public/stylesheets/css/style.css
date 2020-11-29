@@ -44,7 +44,7 @@ footer {
   font-weight: bold;
   text-transform: uppercase;
   text-decoration: none !important;
-  transition: background-color 0.4s;
+  transition: background-color 0.4s, border-color 0.4s;
 }
 
 .custom-btn.large {
@@ -58,10 +58,12 @@ footer {
 
 .custom-btn.dark:hover {
   background-color: #4d4d4d;
+  border-color: #4d4d4d;
 }
 
 .custom-btn.dark:active {
   background-color: #1a1a1a;
+  border-color: #1a1a1a;
 }
 
 .custom-btn.light {
