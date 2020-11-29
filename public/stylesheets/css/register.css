@@ -1,0 +1,27 @@
+/** Colors */
+.layout-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.carousel {
+  min-height: max(100vh, 900px);
+  height: 100%;
+}
+
+.layout-content {
+  width: 100%;
+  max-width: 800px;
+  padding: 10vh 10vw;
+  flex-direction: column;
+  background-color: white;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .layout-content {
+    padding: 5vh 5vw;
+    justify-content: flex-start;
+  }
+}

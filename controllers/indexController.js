@@ -1,17 +1,17 @@
 const sha1 = require('sha1');
 
 const connection = require('../config/database');
-const chefsTable = "chefs";
-const platesTable = "plates";
+const chefTable = "chef";
+const plateTable = "plate";
 
 const jwt = require('jsonwebtoken');
 const secret = sha1('SecretKey');
 
 
 function renderHome(req, res) {
-    const chefsQuery = `SELECT * FROM ${chefsTable}`;
+    const chefQuery = `SELECT * FROM ${chefTable}`;
 
-    connection.query(chefsQuery, function(error, data) {
+    connection.query(chefQuery, function(error, data) {
         if(error) {
             throw error;
         }
@@ -21,28 +21,28 @@ function renderHome(req, res) {
 }
 
 function renderChef(req, res, next) {
-    const { id } = req.params;
+    const { chef_id } = req.params;
 
-    if(isNaN(id)) {
+    if(isNaN(chef_id)) {
         // Redirect not found
         next();
     } 
     
     else {
-        const chefsQuery = `SELECT * FROM ${chefsTable} WHERE id = ${id}`;
-        const platesQuery = `SELECT * FROM ${platesTable} WHERE chef_id = ${id}`;
+        const chefQuery = `SELECT * FROM ${chefTable} WHERE chef_id = ${chef_id}`;
+        const plateQuery = `SELECT * FROM ${plateTable} WHERE chef_id = ${chef_id}`;
 
-        connection.query(chefsQuery, function(chefsError, chefsData) {
+        connection.query(chefQuery, function(chefsError, chefsData) {
             if(chefsError) {
                 throw chefsError;
-            }
+            } 
 
             if(!chefsData.length) {
                 res.render('notfound', { error: `¡Ups! El chef al que intentas acceder no existe.` });
             } else {
                 let [chef] = chefsData;
 
-                connection.query(platesQuery, function(platesError, platesData) {
+                connection.query(plateQuery, function(platesError, platesData) {
                     if(platesError) {
                         throw platesError;
                     }
@@ -52,25 +52,53 @@ function renderChef(req, res, next) {
                 });
             }
         });
-    }
+    } 
 }
 
-function renderPlatesForm(req, res) {
-    let plate = {};
- 
-    if(!Object.values(req.params).length) {
-        res.render('forms/plates', { plate });
-    } else {
-        const { id } = req.params;
-        const platesQuery = `SELECT * FROM ${platesTable} WHERE id = ${id}`;
+function renderLogin(req, res) {
+    res.render('login');
+}
 
-        connection.query(platesQuery, function(error, data) {
-            if(error) {
-                throw error;
+function renderRegister(req, res) {
+    res.render('register');
+}
+
+function renderPlatesForm(req, res, next) {
+    let plate = {};
+
+    //console.log(req.params.chef_id, req.params.plate_id);
+
+    const { chef_id, plate_id } = req.params;
+    if(isNaN(chef_id)) {
+        //Redirect, avoid conflict with some image paths
+        next();
+    } else {
+        const chefQuery = `SELECT * FROM ${chefTable} WHERE chef_id = ${chef_id}`;
+
+        connection.query(chefQuery, function(chefError, chefData) {
+            if(chefError) {
+                throw chefError;
             }
 
-            [plate] = data;
-            res.render('forms/plates', { plate });
+            [chef] = chefData;
+
+            console.log('plate_id', plate_id);
+            if(plate_id) {
+                const plateQuery = `SELECT * FROM ${plateTable} WHERE plate_id = ${plate_id}`;
+
+                connection.query(plateQuery, function(plateError, plateData) {
+                    if(plateError) {
+                        throw plateError;
+                    }
+        
+                    [plate] = plateData;
+                    res.render('forms/plates', { chef, plate });
+                });
+            } else {
+                res.render('forms/plates', { chef, plate });
+            }
+
+            
         });
     }
 } 
@@ -80,5 +108,5 @@ function renderNotFound(req, res) {
 }
 
 module.exports = { 
-    renderHome, renderChef, renderPlatesForm, renderNotFound 
+    renderHome, renderChef, renderLogin, renderRegister, renderPlatesForm, renderNotFound 
 };

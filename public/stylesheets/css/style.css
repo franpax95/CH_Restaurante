@@ -1,0 +1,158 @@
+/** Colors */
+.custom-btn, footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  outline: none !important;
+  transition: all 0.2s;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  min-height: 100vh;
+}
+
+footer {
+  background-color: #333333;
+  padding: 10vh 10vw;
+}
+
+/**
+ * ELEMENTS
+ */
+.custom-btn {
+  padding: 10px 20px;
+  cursor: pointer;
+  border: solid 2px #333333;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-decoration: none !important;
+  transition: background-color 0.4s, border-color 0.4s;
+}
+
+.custom-btn.large {
+  width: 100%;
+}
+
+.custom-btn.dark {
+  background-color: #333333;
+  color: #ffffff;
+}
+
+.custom-btn.dark:hover {
+  background-color: #4d4d4d;
+  border-color: #4d4d4d;
+}
+
+.custom-btn.dark:active {
+  background-color: #1a1a1a;
+  border-color: #1a1a1a;
+}
+
+.custom-btn.light {
+  background-color: #ffffff;
+  color: #333333;
+}
+
+.custom-btn.light:hover {
+  background-color: #f5f5f5;
+}
+
+.custom-btn.light:active {
+  background-color: #d9d9d9;
+}
+
+.custom-link {
+  padding-bottom: 0.5px;
+  cursor: pointer;
+  color: inherit;
+  border-bottom: dotted 1px;
+  transition: border-color 0.2s;
+}
+
+.custom-link:hover {
+  color: inherit;
+  border-color: transparent;
+  text-decoration: none;
+}
+
+.custom-hr {
+  width: 30px !important;
+  margin: 8px 0px 8px 15px;
+  border-color: #333333;
+}
+
+.custom-title {
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.custom-card {
+  height: 500px;
+  padding: 20px;
+  margin-bottom: 50px;
+}
+
+.custom-card .img-wrapper {
+  margin-bottom: 15px;
+  height: 190px;
+  width: 100%;
+  background-color: white;
+}
+
+.custom-card .img-wrapper img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.custom-card .text-wrapper {
+  height: 300px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: white;
+}
+
+input[type=text].custom-input,
+input[type=email].custom-input,
+input[type=password].custom-input,
+textarea.custom-input {
+  width: 100%;
+  padding: 6px 10px;
+  border: solid 1px darkgray;
+  transition: box-shadow 0.1s;
+}
+
+textarea.custom-input {
+  min-height: 100px;
+  resize: none;
+}
+
+input[type=text].custom-input:focus,
+input[type=email].custom-input:focus,
+input[type=password].custom-input:focus,
+textarea.custom-input:focus {
+  width: 100%;
+  padding: 6px 10px;
+  border: solid 1px darkgray;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+}

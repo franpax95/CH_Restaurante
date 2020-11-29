@@ -2,8 +2,8 @@ DROP DATABASE codehouse_restaurant;
 CREATE DATABASE codehouse_restaurant;
 USE codehouse_restaurant;
 
-CREATE TABLE chefs(
-	id INTEGER PRIMARY KEY AUTO_INCREMENT,
+CREATE TABLE chef(
+	chef_id INTEGER PRIMARY KEY AUTO_INCREMENT,
     email VARCHAR(100) UNIQUE NOT NULL,
     password VARCHAR(100) NOT NULL,
     employment_history TEXT,
@@ -13,24 +13,24 @@ CREATE TABLE chefs(
     avatar VARCHAR(100) NOT NULL
 );
 
-CREATE TABLE plates(
-	id INTEGER PRIMARY KEY AUTO_INCREMENT,
+CREATE TABLE plate(
+	plate_id INTEGER PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(150) NOT NULL,
     description TEXT NOT NULL,
     img VARCHAR(100) NOT NULL,
     chef_id INTEGER NOT NULL,
-    CONSTRAINT chef_fk_1 FOREIGN KEY (chef_id) REFERENCES chefs(id) ON UPDATE CASCADE ON DELETE CASCADE
+    CONSTRAINT chef_fk_1 FOREIGN KEY (chef_id) REFERENCES chef(chef_id) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 INSERT INTO
-	chefs (email, password, first_name, last_name, phone_number, avatar)
+	chef (email, password, first_name, last_name, phone_number, avatar)
 VALUES
 	('franpax95@gmail.com', '123456', 'Francisco', 'Navarro', '697883405', '/uploads/chefs/mock1.png'),
     ('elenabravo@gmail.com', 'qwerty', 'Elena', 'Bravo', '696784310', '/uploads/chefs/mock2.png'),
     ('auronffx@gmail.com', 'masamune', 'Auron', 'Guardian', '711374058', '/uploads/chefs/mock3.png');
     
 INSERT INTO
-	plates (name, description, img, chef_id)
+	plate (name, description, img, chef_id)
 VALUES
 	('Huevos con patatas', 'Plato típico del Mediterráneo', '/uploads/plates/mock1.jpg', 1),
     ('Albóndigas', 'Las de siempre. Las de casa.', '/uploads/plates/mock2.jpg', 2),
@@ -39,38 +39,37 @@ VALUES
     ('Lasaña vegana', 'Lasaña con bolognesa vegana', '/uploads/plates/mock5.jpg', 2),
     ('Arroz blanco con bacon', 'Con mucho amor y mucho ketchup', '/uploads/plates/mock6.jpg', 3);
 
-SELECT * FROM chefs;
-SELECT * FROM plates;
+SELECT * FROM chef;
+SELECT * FROM plate;
 
 ## GET ALL PLATES OF A CHEF BY ID 1
-SELECT plates.* FROM chefs, plates WHERE chefs.id = plates.chef_id AND chefs.id = 1;
+SELECT plate.* FROM chef, plate WHERE chef.chef_id = plate.chef_id AND chef.chef_id = 1;
 
 ## GET A SINGLE PLATE BY ID 5
-SELECT * FROM plates WHERE id = 5;
+SELECT * FROM plate WHERE plate_id = 5;
 
 ## GET A SINGLE CHEF BY ID 1
-SELECT * FROM chefs WHERE id = 1;
+SELECT * FROM chef WHERE chef_id = 1;
 
 ## GET COUNT PLATES OF ALL CHEFS
-SELECT chefs.id, chefs.email, count(plates.id) AS plates_number
-FROM chefs, plates
-WHERE chefs.id = plates.chef_id
-GROUP BY chefs.email
+SELECT chef.chef_id, chef.email, count(plate.plate_id) AS plates_number
+FROM chef, plate
+WHERE chef.chef_id = plate.chef_id
+GROUP BY chef.email
 ORDER BY plates_number DESC;
 
 ## GET ALL PLATES WITH USER EMAIL INSTEAD OF USER ID
-SELECT plates.name, plates.description, plates.img, chefs.email
-FROM chefs, plates
-WHERE chefs.id = plates.chef_id;
+SELECT plate.name, plate.description, plate.img, chef.email
+FROM chef, plate
+WHERE chef.chef_id = plate.chef_id;
 
 ## EDIT USER employment_history
-UPDATE chefs
+UPDATE chef
 SET employment_history = 'Sin experiencia laboral previa.'
-WHERE id = 1;
+WHERE chef_id = 1;
 
 ## DELETE plate
-DELETE FROM plates
-WHERE id = 6;
+-- DELETE FROM plate WHERE id = 6;
 
 
 
