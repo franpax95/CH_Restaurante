@@ -1,0 +1,27 @@
+/** Colors */
+$darkColor: #333333;
+$darkHoverColor: #4d4d4d;
+$darkActiveColor: #1a1a1a;
+$lightColor: #ffffff;
+$lightHoverColor: #f5f5f5;
+$lightActiveColor: #d9d9d9;
+
+@mixin responsiveWidth($size, $min: $size, $max: $size) {
+    width: #{'min(max(#{$size}, #{$min}), #{$max})'};
+}
+
+@mixin responsiveFontSize($size, $min: $size, $max: $size) {
+    font-size: #{'min(max(#{$size}, #{$min}), #{$max})'};
+}
+
+@mixin box-shadow($prop) {
+    -webkit-box-shadow: $prop;
+    -moz-box-shadow: $prop;
+    box-shadow: $prop;
+}
+
+%flex-perfect-centering {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

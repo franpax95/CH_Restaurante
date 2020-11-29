@@ -1,0 +1,101 @@
+@import "./util";
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    outline: none !important;
+    transition: all .2s;
+}
+
+button { cursor: pointer; }
+a{ text-decoration: none; }
+
+// html, body { width: 100%; }
+html { height: 100%; }
+body { min-height: 100vh; }
+
+footer {
+    background-color: $darkColor;
+    padding: 10vh 10vw;
+
+    @extend %flex-perfect-centering;
+}
+
+/**
+ * ELEMENTS
+ */
+.custom-btn {
+    padding: 10px 20px;
+
+    @extend %flex-perfect-centering;
+
+    cursor: pointer;
+    border: solid 2px $darkColor;
+
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none !important;
+
+    transition: background-color .4s;
+}
+.custom-btn.large { width: 100%; }
+.custom-btn.dark { background-color: $darkColor; color: $lightColor;  }
+.custom-btn.dark:hover { background-color: $darkHoverColor; }
+.custom-btn.dark:active { background-color: $darkActiveColor; }
+.custom-btn.light { background-color: $lightColor; color: $darkColor;  }
+.custom-btn.light:hover { background-color: $lightHoverColor; }
+.custom-btn.light:active { background-color: $lightActiveColor; }
+
+.custom-link { 
+    padding-bottom: .5px;
+    cursor: pointer;
+    color: inherit;
+    border-bottom: dotted 1px;
+    transition: border-color .2s;
+}
+.custom-link:hover {
+    color: inherit;
+    border-color: transparent;
+    text-decoration: none;
+}
+
+.custom-hr {
+    width: 30px !important;
+    margin: 8px 0px 8px 15px;
+    border-color: #333333;
+}
+
+.custom-title {
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+
+.custom-card {
+    height: 500px;
+    padding: 20px;
+    margin-bottom: 50px;
+}
+.custom-card .img-wrapper {
+    margin-bottom: 15px;
+    height: 190px;
+    width: 100%;
+    background-color: white;
+}
+.custom-card .img-wrapper img { 
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.custom-card .text-wrapper {
+    height: 300px;
+    padding: 20px;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    background-color: white;
+}
