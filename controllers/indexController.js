@@ -66,7 +66,7 @@ function renderRegister(req, res) {
 function renderPlatesForm(req, res, next) {
     let plate = {};
 
-    console.log(req.params.chef_id, req.params.plate_id);
+    //console.log(req.params.chef_id, req.params.plate_id);
 
     const { chef_id, plate_id } = req.params;
     if(isNaN(chef_id)) {
@@ -82,9 +82,8 @@ function renderPlatesForm(req, res, next) {
 
             [chef] = chefData;
 
-            if(!plate_id) {
-                res.render('forms/plates', { chef, plate });
-            } else {
+            console.log('plate_id', plate_id);
+            if(plate_id) {
                 const plateQuery = `SELECT * FROM ${plateTable} WHERE plate_id = ${plate_id}`;
 
                 connection.query(plateQuery, function(plateError, plateData) {
@@ -95,7 +94,11 @@ function renderPlatesForm(req, res, next) {
                     [plate] = plateData;
                     res.render('forms/plates', { chef, plate });
                 });
+            } else {
+                res.render('forms/plates', { chef, plate });
             }
+
+            
         });
     }
 } 
