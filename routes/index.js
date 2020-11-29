@@ -2,11 +2,17 @@ const express = require('express');
 const router = express.Router();
 // const upload = require('../config/storage.js');
 const { 
-    renderHome, renderChef, renderPlatesForm, renderNotFound
+    renderHome, renderChef, renderLogin, renderRegister, renderPlatesForm, renderNotFound 
 } = require('../controllers/indexController');
 
 /* GET home page. */
 router.get('/', renderHome);
+
+/* GET register page. */
+router.get('/register', renderRegister);
+
+/* GET login page. */
+router.get('/login', renderLogin);
 
 /* GET plate form page. */
 router.get('/plates', renderPlatesForm);

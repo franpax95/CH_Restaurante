@@ -55,6 +55,14 @@ function renderChef(req, res, next) {
     }
 }
 
+function renderLogin(req, res) {
+    res.render('login');
+}
+
+function renderRegister(req, res) {
+    res.render('register');
+}
+
 function renderPlatesForm(req, res) {
     let plate = {};
  
@@ -80,5 +88,5 @@ function renderNotFound(req, res) {
 }
 
 module.exports = { 
-    renderHome, renderChef, renderPlatesForm, renderNotFound 
+    renderHome, renderChef, renderLogin, renderRegister, renderPlatesForm, renderNotFound 
 };

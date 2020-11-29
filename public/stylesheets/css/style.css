@@ -131,3 +131,28 @@ footer {
   justify-content: center;
   background-color: white;
 }
+
+input[type=text].custom-input,
+input[type=email].custom-input,
+input[type=password].custom-input,
+textarea.custom-input {
+  width: 100%;
+  padding: 6px 10px;
+  border: solid 1px darkgray;
+  transition: box-shadow 0.1s;
+}
+
+textarea.custom-input {
+  min-height: 100px;
+  resize: none;
+}
+
+input[type=text].custom-input:focus,
+input[type=email].custom-input:focus,
+input[type=password].custom-input:focus,
+textarea.custom-input:focus {
+  width: 100%;
+  padding: 6px 10px;
+  border: solid 1px darkgray;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+}
